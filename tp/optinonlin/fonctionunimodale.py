@@ -1,4 +1,4 @@
-import numpy as np
+# import numpy as np
 import math as mp
 
 def dichotomique(f,a,b):
@@ -27,7 +27,7 @@ def f2(x):
         resultat=mp.sqrt(-(x-50))
     return resultat
 def f3(x):
-    return min(4x,x+5)
+    return min(4*x,x+5)
 def f4(x):
     return -pow(x,3)
 
