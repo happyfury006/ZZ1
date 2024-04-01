@@ -18,24 +18,29 @@ void setBase(int b)
 }
 
 void printBaseB(list * l){
-    char symboles[]={'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k'};
-    
-    // TO DO : A compléter question 10
+    if(l != NULL){
+        char symboles[]={'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k'};
+        printBaseB(l->next);
+        printf("%c", symboles[l->value]);
+    }
+
+    // DONE : A compléter question 10
 }
 
 int baseToDec(list* l){
-    
-    // TO DO : A compléter question 11
-
- 
-    return 0;
+    if(l == NULL){
+        return 0;
+    }else{
+        return (l->value + base*baseToDec(l->next));
+    }
+    // DONE : A compléter question 11
 }
 
 
 
 int baseToDec2(list* l){
     
-    // TO DO : A compléter question 11 (si vous voulez faire avec les deux méthodes)
+    // DONE : A compléter question 11 (si vous voulez faire avec les deux méthodes)
 
  
     return 0;
@@ -43,6 +48,12 @@ int baseToDec2(list* l){
 
 
 list* decToBase(int n ){
-    // TO DO : A compléter question 11 (si vous voulez faire avec les deux méthodes)
-    return NULL;
+    // DONE : A compléter question 11 (si vous voulez faire avec les deux méthodes)
+    if(n == 0){
+        return NULL;
+    }else{
+        list * l = decToBase(n / base);
+        return listAdd(l, n%base);
+    }
+
 }

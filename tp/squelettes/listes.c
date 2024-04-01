@@ -45,80 +45,114 @@ int listSearch(list * plist, int n){
       if(plist==NULL){
         return 0;
       }
-      else{
-        if(plist->value==n){
+      else if(plist->value==n){
             return 1;
         }
-        plist=plist->next;
-        listSearch(plist,n);
+      else{  
+        listSearch(plist->next,n);
       }
+      
       
 }
 
 
 
 list * listMap(list* l , int (*f)(int)){
-      list *newlist =malloc(sizeof(list));
-      newlist->value=f(l->value);
-      newlist->next=listMap(l->next, *f);
+      if(l==NULL){
+        return listCreate();
+      }
+      else{
+        list * newlist = listMap(l->next,f);
+        return listAdd(newlist,f(l->value));
+      }
+      
 
-      // TO DO question 5
-      return NULL;
+      //  DONE question 5
+      
 
 }
 
 list * listFilter(list* l , int (*p)(int)){
-    // TO DO question 6
-    return NULL;
-
+    if(l == NULL){
+      return listCreate();
+    } 
+    else{
+        list * l2 = listFilter(l->next, p);
+        if(p(l->value)){
+          return listAdd(l2, l->value);
+        } 
+        else{
+          return l2;
+        } 
+    }
 }
 
 int listFold(list* l , int (*op)(int,int),int base){
-    // TO DO question 7
-      return 0;
+    if(l == NULL){
+      return base;
+    } 
+    else{
+        return op(l->value, listFold(l->next, op, base));
+    }
+
+    // DONE question 7
 }
 
 
-// TO DO  question 7
-// Fonction opSum
-// .....
+// DONE  question 7
+
+
+int opSomme(int a, int b){
+    return a + b;
+}
 
 int listSum(list* l ){
-    // TO DO question 7
-      return 0;
+    return listFold(l, &opSomme, 0);
 }
 
-// TO DO  question 7
-// Fonction opProd
-// .....
+int opProd(int a, int b){
+    return a*b;
+}
 
 int listProd(list* l ){
-    // TO DO question 7
-      return 0;
+    return listFold(l, &opProd, 1);
 }
 
-// TO DO  question 7
-// Fonction opLen
-// .....
+int opLen(int a, int b){
+    return b+1;
+}
 
 int listLen(list* l ){
-    // TO DO question 7
-      return 0;
+    return listFold(l, &opLen, 0);
 }
+
 
 // concatene à l1 l'inverse de l2
 list * ajouteInverse(list * l1,list * l2){
-    // TO DO question 8
-      return NULL;
+    if(l2 == NULL){
+        return l1;
+    }
+    else{
+        list * tete_l2 = l2 ;
+        l2 = l2->next;
+        tete_l2->next = l1 ;
+        l1 = tete_l2;
+        return ajouteInverse(l1, l2);
+    }
+    // DONE question 8
 }
 
 list* listInverse(list *l){
-    // TO DO question 8
-      return NULL;
+    // DONE question 8
+      return ajouteInverse(NULL,l);
 }
 
 
 
 void listFree(list * plist){
-    // TO DO question 9
+    if(plist!=NULL){
+      listFree(plist->next);
+      free(plist);
+    }
+    // DONE question 9
 }
