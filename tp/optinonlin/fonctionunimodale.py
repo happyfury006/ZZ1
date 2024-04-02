@@ -9,14 +9,13 @@ def dichotomique(f,a,b):
         return a
     elif f(xc)>f(xd):
         a=xc
-        dichotomique(f,a,b)
     elif f(xc)>f(xg):
         b=xc
-        dichotomique(f,a,b)
     else:
         a=xg
         b=xd
-        dichotomique(f,a,b)
+
+    dichotomique(f,a,b)
 
 def f1(x):
     return abs(x-100)
@@ -35,3 +34,51 @@ print(dichotomique(f1,-1000,1000))
 print(dichotomique(f2,-1000,1000))
 print(dichotomique(f3,-1000,1000))
 print(dichotomique(f4,-1000,1000))
+
+#nombre d'or
+
+def nombreor(f,a,b):
+    xg=a+(1/4)*(b-a)
+    xc=a+(2/4)*(b-a)
+    xd=a+(3/4)*(b-a)
+    if (b-a)<pow(10,-7):
+        return a
+    if f(xg)>f(xd):
+        a=xg
+    if f(xg)<f(xd):
+        b=xd
+    else:
+        a=xg
+        b=xd
+    nombreor(f,a,b)
+
+
+#question 3
+ 
+# quetion 4
+
+# alpha=w/v
+# xg=ak +alpha
+# xd=bk-alpha
+
+# question 5
+
+# les deux premier cas l'intervalle est divisé de 1/3
+# le dernier cas l'intervalle est diviser de 2/3
+
+# question 6
+
+# 6 évaluation de la fonction f doivent être faite par itération
+
+# question 7
+
+# xg=ak+(bk-ak)/2-eps
+# xg=ak+(bk-ak)/2+eps
+    
+# question 8 
+
+#alpha = racine(w/u)
+# 1+sqrt(5)/2
+# 
+question 9
+
