@@ -52,37 +52,42 @@ void test_listSearch()
 
 }
 
-// TO DO : question 5
+// TO DONE: question 5
 // Ecrire ici la fonction carre
-
+int carre(int n){
+	return n*n;
+}
 void test_listMap(){
 
 	list * l =liste_de_test();
 	printf("Liste des carres : ");
-	int (*f)(int) = carre();
-	listcarre=listMap(l,f);
+	list * l2 =listMap(l,&carre);
 
-	//TO DO : A compléter question 4
+	// DONE : A compléter question 4
 
-	listDisplay(listecarre);
+	listDisplay(l2);
 	printf("\n");
 	listFree(l);
+	listFree(l2);
 
 }
 
 // TO DO : question 6
 // Ecrire ici la fonction sup3
 
+int sup3(int n){
+	return n>3;
+}
 void test_listFilter(){
 	list * l =liste_de_test();
 	printf("Liste filtree : ");
+	list * l2 =listFilter(l,&sup3);
+	listDisplay(l2);
 
-	//TO DO : A compléter question 6
-
-	
+	//TO DOne : A compléter question 6
 	printf("\n");
 	listFree(l);
-
+	listFree(l2);
 }
 
 void test_listSum(){
