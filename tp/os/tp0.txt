@@ -1,0 +1,25 @@
+Exercice 1: 
+RSA
+Exercice 2:
+la commande sticky n'existe pas chez moi
+
+Exercice 3 :
+find : commande
+/home/ : argument de commande
+-type : option
+f : arguement d'option
+"*.txt" : argument de commande
+-print : option
+2>/dev/null : redirection
+| : combinaison
+head : commande 
+-n : option 
+16 argument commande
+
+ 2)
+   a) on a écrit 2.... pour ne pas afficher les msg d'erreur
+   b) le tube sert a imbriquée 2 commande 
+   c)
+
+
+Exercice 4 :
