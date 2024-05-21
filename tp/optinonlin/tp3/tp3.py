@@ -31,3 +31,4 @@ def puissance_iteree(A,x0,eps):
 print(puissance_iteree(A,x0,eps))
 
 
+
