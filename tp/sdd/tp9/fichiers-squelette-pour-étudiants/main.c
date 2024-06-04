@@ -14,8 +14,8 @@ int main(int argc, char ** argv) {
     srand(time(NULL));
 
 	test_listPivot(); // DECOMMENTER APRES AVOIR TERMINE 1.1
-	//test_quicksort(); // DECOMMENTER APRES AVOIR TERMINE 1.2
-	//test_randomPivot(); // DECOMMENTER APRES AVOIR TERMINE 2
+	test_quicksort(); // DECOMMENTER APRES AVOIR TERMINE 1.2
+	test_randomPivot(); // DECOMMENTER APRES AVOIR TERMINE 2
 }
 
 list* liste_test(){

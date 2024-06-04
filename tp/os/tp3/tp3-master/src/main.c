@@ -67,7 +67,36 @@ int main(int argc, char *argv[])
     }
 
     NO_STDIO_BUFFERING = getenv("NO_STDIO_BUFFERING") != NULL;
-
+    if (argc>2)
+    {
+        int flag=0;
+        pid_t pids[argc-1];
+        for (int i = 1; i < argc; i++)
+        {
+            char* child_argv[]={argv[0],argv[i],NULL};
+            int status =posix_spawn(&pids[i-1],argv[0],NULL,NULL,child_argv,NULL);
+            printf("%id : spawned process %d\n",getpid(),pids[i-1]);
+        }
+        for (int j = 0; j < argc; j++)
+        {
+            int status ;
+            int pid= waitpid(pids[j-1],&status , 0);
+            if (pid=0){
+                flag=-1;
+            }
+            else if (status !=0)
+            {
+                flag = -1;
+            }
+            
+        }
+        return flag;
+    }
+    else
+    {
+        printf("%d\n",getpid());
+    }
+    
     for (int i = 1; i < argc; i++)
     {
         const char *inFilePath = argv[i];
