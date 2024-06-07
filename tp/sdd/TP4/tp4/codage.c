@@ -31,17 +31,70 @@ void libere_encodage(encodage* e) {
 }
 
 int code_char(arbre a, char c, encodage *e) {
+  if (a == NULL) {
+    return 0;
+  }
+  if (code_char(a->gauche, c, e)) {
+    *e = cree_encodage(0, *e);
+    return 1;
+  }
+  
+  if (code_char(a->droite, c, e)) {
+    *e = cree_encodage(1, *e);
+    return 1;
+  }
+  
   return 0;
 }
 
 encodage code_texte(arbre a, char* s) {
-  return NULL; 
+  encodage res = NULL;
+  while (*s != '\0') {
+    encodage e = NULL;
+    code_char(a, *s, &e);
+    if (e != NULL) {
+      if (res == NULL) {
+        res = e;
+      } else {
+        encodage temp = res;
+        while (temp->suivant != NULL) {
+          temp = temp->suivant;
+        }
+        temp->suivant = e;
+      }
+    }
+    s++;
+  }
+  return res;
 }
 
 encodage decode_suivant(FILE* f, arbre a, encodage e) {
-  return NULL;
+  if (a == NULL) {
+    return e;
+  }
+  
+  while (e != NULL) {
+    if (e->data == 0) {
+      a = a->gauche;
+    } else {
+      a = a->droite;
+    }
+    
+    if (a->gauche == NULL && a->droite == NULL) {
+      fprintf(f, "%c", a->data);
+      return e->suivant;
+    }
+    
+    e = e->suivant;
+  }
+  
+  return e;
 }
 
 void decode(FILE* f, arbre a, encodage e) {
+    while (e != NULL) {
+      e = decode_suivant(f, a, e);
+    }
+  
 }
 

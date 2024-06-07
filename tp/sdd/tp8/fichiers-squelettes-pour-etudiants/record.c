@@ -12,7 +12,7 @@ list * listCreate() {
 
 int listSize(list * l) {
     return l->length;
-    // TODO : question 2
+    // DONE : question 2
 }
 
 void addRecord(list * l, int variant, int limit) {
@@ -31,7 +31,7 @@ void addRecord(list * l, int variant, int limit) {
     }
         
     l->length=l->length+1;
-    // TODO : question 3
+    // DONE : question 3
 }
 
 void listDisplay(list * l) {
@@ -41,7 +41,7 @@ void listDisplay(list * l) {
         printf("le varient :%d et la limite :%d\n",parcours->variant,parcours->limit);
         parcours=parcours->next;
     }
-    // TODO : question 4
+    // DONE : question 4
 }
 
 void listFree(list * l){
@@ -52,14 +52,14 @@ void listFree(list * l){
         l->head=libere;
     }
     
-    // TODO : question 5
+    // DONE : question 5
 }
 
 
 void listDestroy(list * l) {
     listFree(l);
     free(l);
-    // TODO : question 6
+    // DONE : question 6
 }
 
 
@@ -83,7 +83,7 @@ int veriTer(list * l){
     }
     }
     return tendance;
-    // TODO : question 7
+    // DONE : question 7
 }
 
 
