@@ -44,6 +44,33 @@ void testAbr() {
 	bstDisplay(abr);
     printf("\n");
 	bstFree(abr);
+	//test number 4 (demandé)
+	printf("Création d'un ABR vide :\n");
+	abr=NULL;
+	bstDisplay(abr);
+	printf("\n");
+	bstFree(abr);
+	//test number 5(demandé)
+	printf("ajout de : 6 7 5 8 4 9 1 3\n");
+	abr=NULL;
+	abr = bstInsert(abr, 6);
+	abr = bstInsert(abr, 7);
+	abr = bstInsert(abr, 5);
+	abr = bstInsert(abr, 8);
+	abr = bstInsert(abr, 4);
+	abr = bstInsert(abr, 9);	
+	abr = bstInsert(abr, 1);
+	abr = bstInsert(abr, 3);
+	printf("Affichage Fonction DIsplay :\n");
+	bstDisplay(abr);
+	printf("\n");
+	printf("Affichage Fonction inorderTrasversal:\n");
+	bstInorderTraversal(abr);		
+	printf("Supression de 7 :\n");
+	bstDelete(abr,7);
+	bstDisplay(abr);
+	bstFree(abr);
+
 }
 
 void testAvl() {
@@ -68,4 +95,43 @@ void testAvl() {
 	avlDisplay(avl);
     printf("\n");
 	avlFree(avl);
+		// test number 3(demandé)
+	avl = NULL;
+	printf("Affichage d'un AVL vide :\n");
+	avlDisplay(avl);
+	printf("\n");
+		// test number 2
+	avl = NULL;
+	avl= avlInsert(avl,6);
+	avl= avlInsert(avl,7);
+	avl= avlInsert(avl,5);
+	avl= avlInsert(avl,8);
+	printf("Affichage d'un AVL avec 6 7 5 8 :\n");
+	avlDisplay(avl);
+	printf("\n");
+	avl= avlInsert(avl,4);
+	avl= avlInsert(avl,9);
+	avl= avlInsert(avl,1);
+	avl= avlInsert(avl,3);
+	printf("Affichage d'AVL avec les valeurs ajoutés 4 9 1 3 :\n");
+	avlDisplay(avl);
+	printf("\n");
+	avlFree(avl);
+		// test number 2
+	avl = NULL;
+	avl= avlInsert(avl,6);
+	avl= avlInsert(avl,7);
+	avl= avlInsert(avl,5);
+	avl= avlInsert(avl,8);
+	avl= avlInsert(avl,4);
+	avl= avlInsert(avl,9);
+	avl= avlInsert(avl,1);
+	avl= avlInsert(avl,3);	
+	printf("Affichage d'un AVL ajouté des valeurs 6 7 5 8 4 9 1 3 :\n");
+	avlDisplay(avl);
+	printf("\n");
+	avl = avlDelete(avl, 7);
+	printf("Suppression de 7 :\n");
+	avlDisplay(avl);
+ printf("\n");
 }
